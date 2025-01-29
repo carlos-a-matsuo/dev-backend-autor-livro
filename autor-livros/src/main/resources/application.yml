@@ -1,0 +1,52 @@
+server:
+  port: 8085
+  servlet:
+    session:
+      cookie:
+        name: UISESSION
+       
+# SPRING 
+spring:        
+#          
+# Security       
+  thymeleaf:
+    cache: false
+  security:
+    oauth2:
+      client:
+        registration:
+          custom-client:
+            client-id: R2dpxQ3vPrtfgF72
+            client-secret: fDw7Mpkk5czHNuSRtmhGmAGL42CaxQB9
+            client-name: Auth Server
+            scope: user_info
+            provider: custom-provider
+            redirect-uri: http://localhost:8085/login/oauth2/code/
+            client-authentication-method: basic
+            authorization-grant-type: authorization_code
+        provider:
+          custom-provider:
+            token-uri: http://localhost:8084/auth/oauth/token
+            authorization-uri: http://localhost:8084/auth/oauth/authorize
+            user-info-uri: http://localhost:8084/auth/user/me
+            user-name-attribute: name
+
+# DATA SOURCE            
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName-sql: org.h2.Driver
+    username: sa
+    password: "" 
+        
+# H2
+  h2:
+    console:
+    enabled: true
+    path: /h2
+    settings: false	            
+    
+# JPA       
+  jpa:
+     database-platform: org.hibernate.dialect.H2Dialect
+     defer-datasource-initialization: true    
+     

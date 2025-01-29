@@ -1,0 +1,11 @@
+#title{
+    margin:40px 0;
+}
+
+hr.double {
+
+  border: 10px solid black;
+  border-radius: 5px;
+  text-align: center;	
+	
+}
